@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Little Lemon | Chicago</title>
+  <style>
+    :root { color-scheme: light; --green: #495e57; --yellow: #f4ce14; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 16px/1.6 system-ui, sans-serif; color: #222; }
+    header, main, footer { padding: 1.2rem max(1.25rem, calc((100% - 980px) / 2)); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { color: var(--green); font-weight: 800; font-size: 1.4rem; letter-spacing: .04em; }
+    nav a { color: #222; margin-left: 1.2rem; text-decoration: none; }
+    .hero { background: var(--green); color: white; padding-top: 3rem; padding-bottom: 3rem; }
+    .hero h1 { color: var(--yellow); font-size: clamp(2.2rem, 6vw, 3.6rem); margin: 0; line-height: 1.1; }
+    .hero p { max-width: 38rem; }
+    .card { margin: 2rem 0; padding: 1.4rem; border-radius: 12px; background: #f4f4f1; }
+    code { background: white; padding: .15rem .35rem; border-radius: 4px; }
+    footer { border-top: 1px solid #ddd; color: #555; }
+    @media (max-width: 520px) { header { align-items: flex-start; flex-direction: column; } nav a { margin: 0 1rem 0 0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">LITTLE LEMON</div>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/restaurant/menu/">Menu API</a><a href="/restaurant/booking/tables/">Bookings API</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Little Lemon</h1>
+      <p>Chicago · Mediterranean restaurant</p>
+      <p>Fresh Mediterranean cooking, served with a little sunshine. Browse the menu or use the booking API to reserve a table.</p>
+    </section>
+    <section class="card">
+      <h2>Explore the API</h2>
+      <p>The menu is available to browse. Create an account and sign in with a token to manage menu items and table bookings.</p>
+      <p><a href="/restaurant/menu/">Browse the menu</a> · <a href="/api-auth/login/">Sign in to the API</a></p>
+    </section>
+  </main>
+  <footer>Little Lemon · Chicago</footer>
+</body>
+</html>

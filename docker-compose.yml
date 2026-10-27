@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-littlelemon}
+      MYSQL_USER: ${DB_USER:-littlelemon}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-littlelemon}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-local-root-password}
+    ports:
+      - "3306:3306"
+    volumes:
+      - littlelemon_mysql_data:/var/lib/mysql
+
+volumes:
+  littlelemon_mysql_data:

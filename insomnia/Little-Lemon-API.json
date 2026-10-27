@@ -1,0 +1,102 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-10-23T00:00:00.000Z",
+  "__export_source": "little-lemon-capstone",
+  "resources": [
+    {
+      "_id": "wrk_little_lemon",
+      "_type": "workspace",
+      "name": "Little Lemon API",
+      "description": "Django REST Framework capstone API"
+    },
+    {
+      "_id": "env_little_lemon",
+      "_type": "environment",
+      "parentId": "wrk_little_lemon",
+      "name": "Base Environment",
+      "data": { "base_url": "http://127.0.0.1:8000", "token": "" }
+    },
+    {
+      "_id": "fld_auth",
+      "_type": "request_group",
+      "parentId": "wrk_little_lemon",
+      "name": "Authentication"
+    },
+    {
+      "_id": "req_register",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Register user",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/register/",
+      "body": { "mimeType": "application/json", "text": "{\"username\":\"guest1\",\"email\":\"guest@example.com\",\"password\":\"strong-pass-123\"}" },
+      "headers": [{ "name": "Content-Type", "value": "application/json" }]
+    },
+    {
+      "_id": "req_token",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Obtain token",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/token/",
+      "body": { "mimeType": "application/json", "text": "{\"username\":\"guest1\",\"password\":\"strong-pass-123\"}" },
+      "headers": [{ "name": "Content-Type", "value": "application/json" }]
+    },
+    {
+      "_id": "fld_menu",
+      "_type": "request_group",
+      "parentId": "wrk_little_lemon",
+      "name": "Menu"
+    },
+    {
+      "_id": "req_menu_list",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "List menu",
+      "method": "GET",
+      "url": "{{ _.base_url }}/restaurant/menu/"
+    },
+    {
+      "_id": "req_menu_create",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "Create menu item (token required)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/restaurant/menu/",
+      "body": { "mimeType": "application/json", "text": "{\"title\":\"Bruschetta\",\"price\":\"8.00\",\"inventory\":10}" },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Token {{ _.token }}" }
+      ]
+    },
+    {
+      "_id": "fld_bookings",
+      "_type": "request_group",
+      "parentId": "wrk_little_lemon",
+      "name": "Bookings"
+    },
+    {
+      "_id": "req_booking_list",
+      "_type": "request",
+      "parentId": "fld_bookings",
+      "name": "List bookings (token required)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/restaurant/booking/tables/",
+      "headers": [{ "name": "Authorization", "value": "Token {{ _.token }}" }]
+    },
+    {
+      "_id": "req_booking_create",
+      "_type": "request",
+      "parentId": "fld_bookings",
+      "name": "Create booking (token required)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/restaurant/booking/tables/",
+      "body": { "mimeType": "application/json", "text": "{\"name\":\"Alex Morgan\",\"no_of_guests\":2,\"booking_date\":\"2026-12-01\",\"booking_time\":\"19:00\"}" },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Authorization", "value": "Token {{ _.token }}" }
+      ]
+    }
+  ]
+}
